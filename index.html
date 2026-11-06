@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rodelph Osias | Embedded & Hardware Engineer</title>
+<meta name="description" content="Rodelph Osias: computer engineering student at UT Tyler building embedded hardware, power systems, and firmware. Graduating December 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --board:#0d2620;      /* solder mask */
+  --board-2:#123229;    /* raised layer */
+  --trace:#1c4a3c;      /* unpowered trace */
+  --copper:#d08a4e;     /* exposed copper */
+  --gold:#e3bd6b;       /* ENIG pad */
+  --silk:#eaeee6;       /* silkscreen */
+  --muted:#9fb5ab;
+  --line:rgba(234,238,230,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--board);
+  color:var(--silk);
+  font-family:"Archivo",system-ui,sans-serif;
+  font-variation-settings:"wdth" 100;
+  font-size:1.0625rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(rgba(234,238,230,.05) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+a{color:var(--gold);text-underline-offset:3px}
+a:hover{color:var(--silk)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* nav */
+header.top{position:sticky;top:0;z-index:10;background:rgba(13,38,32,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.mark{font-weight:750;font-variation-settings:"wdth" 125;color:var(--silk);text-decoration:none;letter-spacing:.01em}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{color:var(--muted);text-decoration:none;font-size:.95rem}
+nav a:hover{color:var(--silk)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero svg.traces{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.traces path{fill:none;stroke:var(--trace);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.traces path.live{stroke:var(--copper);stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:route 1.8s cubic-bezier(.6,.1,.3,1) forwards;animation-delay:var(--d,0s)}
+.traces circle{fill:var(--board);stroke:var(--gold);stroke-width:2.5;opacity:0;animation:pad .3s ease forwards;animation-delay:var(--d,1.6s)}
+@keyframes route{to{stroke-dashoffset:0}}
+@keyframes pad{to{opacity:1}}
+.hero .wrap{position:relative;padding-top:120px;padding-bottom:110px}
+.hero h1{
+  font-weight:800;font-variation-settings:"wdth" 125;
+  font-size:clamp(3rem,9vw,7.25rem);line-height:.92;letter-spacing:-.01em;
+}
+.hero p.lede{margin-top:28px;max-width:34ch;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.45;color:var(--silk)}
+.hero p.meta{margin-top:14px;color:var(--muted)}
+.actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-block;padding:12px 22px;border-radius:3px;font-weight:600;text-decoration:none;border:1.5px solid var(--copper);color:var(--silk)}
+.btn.primary{background:var(--copper);color:var(--board)}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:var(--board)}
+
+/* sections */
+section.block{padding:96px 0;border-bottom:1px solid var(--line)}
+h2{font-weight:750;font-variation-settings:"wdth" 118;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.1;margin-bottom:40px}
+h3{font-weight:700;font-size:1.3rem;line-height:1.25}
+.sub{color:var(--muted);font-size:.95rem;margin-top:4px}
+
+/* featured project */
+.feature{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;padding:36px;background:var(--board-2);border:1px solid var(--line);border-left:4px solid var(--copper);border-radius:4px}
+.feature h3{font-size:1.7rem;font-variation-settings:"wdth" 110}
+.feature p.what{margin-top:16px;max-width:52ch}
+.feature ul{list-style:none;display:grid;gap:18px}
+.feature li{padding-left:18px;position:relative}
+.feature li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;border:2px solid var(--gold)}
+.feature li strong{display:block;color:var(--gold);font-weight:650}
+
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.stack span{font-size:.85rem;padding:3px 10px;border:1px solid var(--line);border-radius:2px;color:var(--muted)}
+
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.proj{padding:32px 32px 32px 0;border-bottom:1px solid var(--line)}
+.proj:nth-child(even){padding:32px 0 32px 32px;border-left:1px solid var(--line)}
+.proj p{margin-top:12px;max-width:58ch}
+.status{display:inline-block;margin-left:8px;font-size:.78rem;font-weight:600;padding:1px 8px;border-radius:10px;background:rgba(227,189,107,.14);color:var(--gold);vertical-align:middle}
+
+/* experience */
+.rows{display:grid;gap:0}
+.row{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:28px 0;border-top:1px solid var(--line)}
+.row .when{color:var(--muted)}
+.row p{margin-top:8px;max-width:62ch}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.skills h3{font-size:1.05rem;color:var(--copper);margin-bottom:12px}
+.skills ul{list-style:none;display:grid;gap:6px;color:var(--silk)}
+
+/* contact */
+.contact{padding:110px 0 120px}
+.contact h2{font-size:clamp(2.2rem,6vw,4.25rem);font-variation-settings:"wdth" 125;margin-bottom:20px}
+.contact p{max-width:48ch;color:var(--muted)}
+.contact .email{display:inline-block;margin-top:28px;font-size:clamp(1.2rem,3vw,1.7rem);font-weight:650;word-break:break-all}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.9rem}
+
+@media (max-width:860px){
+  .feature{grid-template-columns:1fr;gap:28px;padding:24px}
+  .projects{grid-template-columns:1fr}
+  .proj,.proj:nth-child(even){padding:28px 0;border-left:0}
+  .row{grid-template-columns:1fr;gap:4px}
+  .skills{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  nav ul{gap:16px}
+  nav li.hide-sm{display:none}
+  .hero .wrap{padding-top:72px;padding-bottom:80px}
+  section.block{padding:72px 0}
+  .skills{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .traces path.live{animation:none;stroke-dashoffset:0}
+  .traces circle{animation:none;opacity:1}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#">R. Osias</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li class="hide-sm"><a href="#experience">Experience</a></li>
+        <li class="hide-sm"><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <svg class="traces" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <!-- idle traces -->
+    <path d="M1200 90 H980 L930 140 V300"/>
+    <path d="M1200 520 H1040 L1000 480 V380"/>
+    <path d="M760 640 V560 L800 520 H900"/>
+    <path d="M0 600 H180 L220 560"/>
+    <!-- powered traces -->
+    <path class="live" style="--len:900;--d:.2s" d="M1200 200 H1060 L1010 250 V420 L960 470 H720"/>
+    <path class="live" style="--len:700;--d:.45s" d="M1200 330 H1110 L1080 360 V560 L1040 600 H860"/>
+    <path class="live" style="--len:620;--d:.7s" d="M1200 40 H900 L850 90 V180 L820 210 H700"/>
+    <circle cx="720" cy="470" r="7" style="--d:1.9s"/>
+    <circle cx="860" cy="600" r="7" style="--d:2.1s"/>
+    <circle cx="700" cy="210" r="7" style="--d:2.3s"/>
+    <circle cx="930" cy="300" r="5" style="--d:0s;opacity:1;animation:none;stroke:var(--trace)"/>
+    <circle cx="1000" cy="380" r="5" style="--d:0s;opacity:1;animation:none;stroke:var(--trace)"/>
+  </svg>
+  <div class="wrap">
+    <h1>Rodelph<br>Osias</h1>
+    <p class="lede">Computer engineer building embedded hardware, from power architecture and firmware to whole-system integration.</p>
+    <p class="meta">UT Tyler, B.S. Computer Engineering, graduating December 2026. Houston, TX, open to relocating.</p>
+    <div class="actions">
+      <a class="btn primary" href="Rodelph_Osias_Resume.pdf" target="_blank" rel="noopener">View resume (PDF)</a>
+      <a class="btn" href="mailto:rosias@patriots.uttyler.edu">Email me</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+
+    <article class="feature">
+      <div>
+        <h3>Autonomous multi-agent tracking system</h3>
+        <p class="sub">Senior design team, Spring 2026</p>
+        <p class="what">A drone and a ground vehicle that work together to find and follow a target, linked by bidirectional telemetry. I owned the ground vehicle's electrical integration, power architecture, component selection and hardware troubleshooting, from concept through system testing.</p>
+        <div class="stack"><span>Raspberry Pi 4</span><span>Arduino Mega2560</span><span>ROS 2</span><span>YOLOv8</span><span>PID control</span><span>LiDAR</span><span>UART / MAVLink</span></div>
+      </div>
+      <ul>
+        <li><strong>Fixed random resets at the source</strong>The Pi kept browning out. I traced it to motor startup current sagging a shared supply, then split power onto a dedicated 7.4 V battery with a buck converter regulated to 5.1 V. The resets stopped.</li>
+        <li><strong>Connected compute to motion</strong>Linked the Raspberry Pi and Arduino Mega over UART for motor control, and tied in LiDAR sensing, ROS 2 mapping and YOLOv8 + PID tracking for system-level testing.</li>
+        <li><strong>Designed the power rails</strong>Separate motor and compute rails with decoupling, so noisy loads can't take down the computer.</li>
+      </ul>
+    </article>
+
+    <div class="projects">
+      <article class="proj">
+        <h3>Light-activated sensor system <span class="status">PCB in progress</span></h3>
+        <p class="sub">STM32 NUCLEO-F446RE, Altium Designer, Fall 2026</p>
+        <p>Embedded C firmware that samples a light-dependent resistor on the 12-bit ADC and switches an output using hysteresis thresholds, streaming readings over UART. I tracked down a USART2 configuration fault that was blocking serial output. Now designing a custom PCB in Altium: schematic, footprints and layout.</p>
+      </article>
+      <article class="proj">
+        <h3>RTL-SDR signal detection <span class="status">In progress</span></h3>
+        <p class="sub">Raspberry Pi 4, GNU Radio, Python</p>
+        <p>A headless Pi receiving station with three tools: a real-time FM receiver, a spectrum scanner that estimates the noise floor and logs signals above a threshold, and an ADS-B tracker that decodes aircraft transponders at 1090 MHz and maps their tracks.</p>
+      </article>
+      <article class="proj">
+        <h3>STM32 peripherals and hardware debug</h3>
+        <p class="sub">Embedded C, Keil MDK, Summer 2025</p>
+        <p>Configured and checked UART, SPI, I2C and GPIO on ARM Cortex-M, using an oscilloscope and logic analyzer to inspect signal timing. Also wrote ARM Cortex-M assembly.</p>
+      </article>
+      <article class="proj">
+        <h3>Digital logic and VLSI design</h3>
+        <p class="sub">Coursework, 2025–2026</p>
+        <p>CMOS circuits including carry look-ahead adders, Booth multipliers and SRAM. In Verilog and VHDL: a vending-machine FSM with testbench, a FIFO buffer with status flags, and a multi-bit arithmetic unit, all checked in simulation.</p>
+      </article>
+      <article class="proj">
+        <h3>Obstacle avoidance robot</h3>
+        <p class="sub">Ratliff Relay Robotics Competition, 2024</p>
+        <p>Did the power calculations and picked the components, integrated ultrasonic, IR and vision sensors with Arduino motor control, and debugged the hardware live during the competition.</p>
+      </article>
+      <article class="proj">
+        <h3>Smaller builds</h3>
+        <p class="sub">Arduino, Raspberry Pi, Fusion 360</p>
+        <p>A line-tracking robot that recognizes faces and tags with HuskyLens, a Raspberry Pi home security camera with motion detection, and a 3D-printed trash can that opens with a hand wave.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <div class="rows">
+      <div class="row">
+        <div class="when">June 2022 to present</div>
+        <div>
+          <h3>Transportation Security Officer</h3>
+          <p class="sub">Department of Homeland Security, TSA</p>
+          <p>Run daily calibration and maintenance checks on screening equipment, and document technical anomalies so they get fixed. Follow federal procedures in a safety-critical setting and keep accurate compliance records.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Fall 2024 to present</div>
+        <div>
+          <h3>Chapter Secretary</h3>
+          <p class="sub">IEEE, UT Tyler</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Expected December 2026</div>
+        <div>
+          <h3>B.S. Computer Engineering, minor in Computer Science</h3>
+          <p class="sub">The University of Texas at Tyler, Houston Engineering Center</p>
+          <p>Relevant coursework: VLSI design (CMOS), computer architecture, operating systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><h3>Hardware design</h3><ul><li>Analog and digital circuits</li><li>Altium Designer, schematic capture</li><li>Power conversion, buck regulators</li><li>Power distribution</li><li>CMOS / VLSI, Multisim</li><li>Soldering</li></ul></div>
+      <div><h3>Embedded</h3><ul><li>STM32 (ARM Cortex-M)</li><li>Arduino, Raspberry Pi</li><li>Embedded C, C++</li><li>Verilog / VHDL</li><li>ADC, GPIO</li><li>UART, SPI, I2C</li></ul></div>
+      <div><h3>Test and debug</h3><ul><li>Oscilloscope</li><li>Logic analyzer</li><li>Root-cause analysis</li><li>System integration</li><li>Functional verification</li></ul></div>
+      <div><h3>Software and tools</h3><ul><li>Python, MATLAB, LabVIEW</li><li>Git / GitHub, Linux</li><li>ROS 2, YOLOv8</li><li>AutoCAD, Fusion 360</li><li>Keil MDK, STM32CubeIDE</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p>I'm looking for embedded, hardware and systems engineering roles starting in 2027, in Houston, Dallas or anywhere I can build real hardware and keep learning.</p>
+    <a class="email" href="mailto:rosias@patriots.uttyler.edu">rosias@patriots.uttyler.edu</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="y">2026</span> Rodelph Osias</div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
